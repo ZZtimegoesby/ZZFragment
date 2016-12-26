@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ArticleModel" representedClassName=".ArticleModel" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coverimg" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="userinfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Userinfo" inverseName="articles" inverseEntity="Userinfo" syncable="YES"/>
+    </entity>
+    <entity name="MusicModel" representedClassName=".MusicModel" syncable="YES">
+        <attribute name="img" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="musicID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="singer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="playinfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Playinfo" inverseName="musicModel" inverseEntity="Playinfo" syncable="YES"/>
+    </entity>
+    <entity name="Playinfo" representedClassName=".Playinfo" syncable="YES">
+        <attribute name="albumTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imgUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tingid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="musicModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicModel" inverseName="playinfo" inverseEntity="MusicModel" syncable="YES"/>
+        <relationship name="userinfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Userinfo" inverseName="playinfo" inverseEntity="Userinfo" syncable="YES"/>
+    </entity>
+    <entity name="Userinfo" representedClassName=".Userinfo" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="uname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="articles" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleModel" inverseName="userinfo" inverseEntity="ArticleModel" syncable="YES"/>
+        <relationship name="playinfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Playinfo" inverseName="userinfo" inverseEntity="Playinfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ArticleModel" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="MusicModel" positionX="-54" positionY="63" width="128" height="135"/>
+        <element name="Userinfo" positionX="-63" positionY="72" width="128" height="120"/>
+        <element name="Playinfo" positionX="-54" positionY="72" width="128" height="150"/>
+    </elements>
+</model>

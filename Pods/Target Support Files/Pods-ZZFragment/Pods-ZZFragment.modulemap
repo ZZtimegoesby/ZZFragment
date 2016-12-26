@@ -1,0 +1,6 @@
+framework module Pods_ZZFragment {
+  umbrella header "Pods-ZZFragment-umbrella.h"
+
+  export *
+  module * { export * }
+}

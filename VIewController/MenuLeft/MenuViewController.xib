@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="ZZFragment" customModuleProvider="target">
+            <connections>
+                <outlet property="backImg" destination="Xav-hH-ggp" id="7hc-Sx-Rp7"/>
+                <outlet property="nameLabel" destination="8Ub-hV-Ynv" id="iWc-u4-xay"/>
+                <outlet property="tableView" destination="lY2-aY-0NL" id="LQd-do-ujv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flowerblack" translatesAutoresizingMaskIntoConstraints="NO" id="Xav-hH-ggp"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lY2-aY-0NL">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ed-w1-fO0">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-hV-Ynv">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="vNF-yU-uyU">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="TlM-La-hxM"/>
+                                <constraint firstAttribute="height" constant="90" id="ZSi-uV-Z4x"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="vNF-yU-uyU" firstAttribute="centerX" secondItem="0ed-w1-fO0" secondAttribute="centerX" id="Ifo-4L-UZd"/>
+                        <constraint firstItem="vNF-yU-uyU" firstAttribute="centerX" secondItem="8Ub-hV-Ynv" secondAttribute="centerX" id="J4o-cR-hxb"/>
+                        <constraint firstItem="8Ub-hV-Ynv" firstAttribute="top" secondItem="vNF-yU-uyU" secondAttribute="bottom" constant="15" id="LZs-eC-vx0"/>
+                        <constraint firstItem="vNF-yU-uyU" firstAttribute="top" secondItem="0ed-w1-fO0" secondAttribute="top" constant="15" id="Szd-hy-lw7"/>
+                        <constraint firstAttribute="height" constant="150" id="hOu-xB-kAY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Xav-hH-ggp" secondAttribute="bottom" id="1ak-Jq-Wxb"/>
+                <constraint firstAttribute="trailing" secondItem="0ed-w1-fO0" secondAttribute="trailing" id="5SH-N9-Lue"/>
+                <constraint firstItem="lY2-aY-0NL" firstAttribute="top" secondItem="0ed-w1-fO0" secondAttribute="bottom" constant="5" id="CEu-Uy-ULL"/>
+                <constraint firstItem="lY2-aY-0NL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PtS-Rb-sL1"/>
+                <constraint firstAttribute="bottom" secondItem="lY2-aY-0NL" secondAttribute="bottom" constant="50" id="S38-18-SSK"/>
+                <constraint firstItem="0ed-w1-fO0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="WsU-Ps-bvE"/>
+                <constraint firstItem="Xav-hH-ggp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b8K-FV-Omj"/>
+                <constraint firstItem="0ed-w1-fO0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fDy-bQ-plZ"/>
+                <constraint firstAttribute="trailing" secondItem="Xav-hH-ggp" secondAttribute="trailing" id="kRD-Nh-lT5"/>
+                <constraint firstItem="Xav-hH-ggp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pmc-Tr-kND"/>
+                <constraint firstAttribute="trailing" secondItem="lY2-aY-0NL" secondAttribute="trailing" id="weV-9L-C8w"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="defaultAvatar" width="100" height="100"/>
+        <image name="flowerblack" width="300" height="473"/>
+    </resources>
+</document>

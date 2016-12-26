@@ -1,0 +1,47 @@
+PODS:
+  - Alamofire (4.0.1)
+  - AlamofireImage (3.1.0):
+    - Alamofire (~> 4.0)
+  - CYLTableViewPlaceHolder (1.0.8)
+  - JSONModel (1.7.0)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.0)
+  - CYLTableViewPlaceHolder
+  - JSONModel
+  - MagicalRecord
+  - MBProgressHUD
+  - MJRefresh
+  - MMDrawerController
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
+  CYLTableViewPlaceHolder: 44075c119aab78bbc514c75d771d6565e19938e8
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+
+PODFILE CHECKSUM: 82d95f70e31324079f5435eece0e55456736846e
+
+COCOAPODS: 1.0.1
