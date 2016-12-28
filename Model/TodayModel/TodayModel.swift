@@ -12,6 +12,8 @@ import JSONModel
 class TodayModel: BaseModel {
 
     var id: String?
+    var view: NSNumber?
+    var like: NSNumber?
     var coverimg: String?
     var name: String?
     var enname: String?

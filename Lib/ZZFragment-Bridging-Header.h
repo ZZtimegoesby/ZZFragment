@@ -4,6 +4,6 @@
 
 #import "HJWConst.h"
 #import "HJWAnimationCell.h"
-
+#import "JPUSHService.h"
 
 

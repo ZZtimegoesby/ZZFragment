@@ -14,7 +14,6 @@ class TodayMusicCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
     
     var model: TodayModel? {
         
@@ -22,8 +21,7 @@ class TodayMusicCell: UITableViewCell {
             
             nameLabel.text = (model?.name)! + "·" + (model?.enname)!
             titleLabel.text = (model?.title)!
-            authorLabel.text = "By：" + (model?.userinfo?.uname)!
-            img.af_setImage(withURL: URL.init(string: model!.coverimg!)!, placeholderImage: #imageLiteral(resourceName: "personPageNothing"), filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: UIImageView.ImageTransition.crossDissolve(0.3), runImageTransitionIfCached: true, completion: nil)
+            img.af_setImage(withURL: URL.init(string: (model!.playInfo?.imgUrl)!)!, placeholderImage: #imageLiteral(resourceName: "personPageNothing"), filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: UIImageView.ImageTransition.crossDissolve(0.3), runImageTransitionIfCached: true, completion: nil)
         }
     }
     

@@ -32,7 +32,7 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func createTableView() -> Void {
         
-        tableView = TodayTableView.init(frame: CGRect.init(x: 0, y: 0, width: width, height: height), style: .plain)
+        tableView = TodayTableView.init(frame: CGRect.init(x: 0, y: 0, width: width, height: height), style: .grouped)
         tableView?.tag = 10
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -53,9 +53,7 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
             
             self.loadData()
             self.loadSliderImage()
-            
         }) {
-            
             self.start += self.limit
             self.loadData()
         }
@@ -103,7 +101,6 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
                     
                     self.picDataArray.append(sliderMdoel)
                 }
-                
                 DispatchQueue.main.async(execute: {
                     
                     self.tableView?.createTabelViewHeaderView(VC: self, arr: self.picDataArray)
@@ -163,14 +160,19 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     //MARK:    -------- tableView 协议方法 ------------
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return todayModelArray.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-            let model = todayModelArray[indexPath.row] as? TodayModel
+            let model = todayModelArray[indexPath.section] as? TodayModel
             
             if model?.type == 2 {
                 
@@ -203,23 +205,23 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-            let model = todayModelArray[indexPath.row] as! TodayModel
-            
-            if model.type == 2 {
-                
-                return (height - 70) / 2 - 70
-                
-            } else if model.type == 5 {
-                
-                return (height - 70) / 2 - 100
-            }
-            
-            return (height - 70) / 2
+        let model = todayModelArray[indexPath.section] as! TodayModel
+        
+        if model.type == 5 {
+            return (height - 70) / 2 - 105
+        } else if model.type == 2  {
+            return (height - 70) / 2 - 50
+        }
+        
+        if model.content! == "" {
+            return (height - 70) / 2 - 18
+        }
+        return (height - 70) / 2 + 5
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let model = todayModelArray[indexPath.row] as! TodayModel
+        let model = todayModelArray[indexPath.section] as! TodayModel
         
         if model.type == 2 {
             
@@ -240,6 +242,32 @@ class TodayViewController: BaseViewController, UITableViewDelegate, UITableViewD
             
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let view = Bundle.main.loadNibNamed("TodayCellFooterView", owner: nil, options: nil)?.first as! TodayCellFooterView
+        
+        view.model = todayModelArray[section] as? TodayModel
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 25
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 0
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,9 +10,11 @@ import UIKit
 import MMDrawerController
 import MagicalRecord
 import AVFoundation
+import AdSupport
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
 
     var window: UIWindow?
     var drawerVC: MMDrawerController?
@@ -23,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var bgTaskId: UIBackgroundTaskIdentifier = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        JPush(launchOptions: launchOptions)
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
@@ -39,6 +43,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bgTaskId = AppDelegate.backgroudPlayID(backTaskID: bgTaskId)
         
         return true
+    }
+    
+    func JPush(launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Void {
+        
+        let entity = JPUSHRegisterEntity.init()
+        let appkey = "9eb01ce35f5cd90b8e0b9e69"
+        
+        entity.types = Int(UNAuthorizationOptions.alert.rawValue |
+            UNAuthorizationOptions.badge.rawValue |
+            UNAuthorizationOptions.sound.rawValue)
+        
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        
+        JPUSHService.setup(withOption: launchOptions, appKey: appkey, channel: "ios", apsForProduction: false)
+    }
+    
+    //注册APNS成功 并上报DeviceToken
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    //不在前台或程序关闭时，通过点击通知中心消息进入程序会调用此方法
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        
+        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
+            let userInfo = response.notification.request.content.userInfo
+            JPUSHService.handleRemoteNotification(userInfo)
+            print("不在前台或程序关闭时，收到远程通知")
+        } else{
+            print("不在前台或程序关闭时，收到本地通知")
+        }
+        completionHandler()
+    }
+    
+    //在前台收到通知时调用此方法
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        
+        if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
+            JPUSHService.handleRemoteNotification(notification.request.content.userInfo)
+            print("前台收到远程通知")
+        } else {
+            print("前台收到本地通知")
+        }
+//        completionHandler(Int(UNNotificationPresentationOptions.alert.rawValue))
     }
     
     func createRootViewController() -> Void {
@@ -106,11 +155,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         UIApplication.shared.beginReceivingRemoteControlEvents()
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         UIApplication.shared.endReceivingRemoteControlEvents()
+        application.applicationIconBadgeNumber = 0
         
         let imageView = UIImageView(frame: (self.window?.bounds)!)
         
